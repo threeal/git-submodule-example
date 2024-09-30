@@ -11,3 +11,15 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v4.2.0
+        with:
+          submodules: recursive
+
+      - name: Assert Git Submodules
+        run: |
+          ACTUAL=$(git submodule status --recursive)
+          EXPECTED=" bea29a84b6c55a49fef34be3e7a17498c633b6d9 project-starter (v1.2.0)"
+          if [ "$ACTUAL" != "$EXPECTED" ]; then
+            echo "actual: $ACTUAL"
+            echo "expected: $EXPECTED"
+            exit 1
+          fi
