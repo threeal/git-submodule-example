@@ -1,0 +1,3 @@
+[submodule "project-starter"]
+	path = project-starter
+	url = https://github.com/threeal/project-starter.git
