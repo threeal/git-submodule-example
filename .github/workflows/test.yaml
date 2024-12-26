@@ -11,8 +11,9 @@ jobs:
     steps:
       - name: Checkout Project
         uses: actions/checkout@v4.2.1
-        with:
-          submodules: recursive
+
+      - name: Initialize Submodules
+        run: git submodule update --init --recursive
 
       - name: Assert Git Submodules
         run: |
